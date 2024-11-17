@@ -1,8 +1,12 @@
 package it.cantest;
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
@@ -11,6 +15,7 @@ public class JsonPlaceholderTest {
     @BeforeAll
     public static void setup() {
         RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
+        RestAssured.filters(List.of(new AllureRestAssured()));
     }
 
     @Test
